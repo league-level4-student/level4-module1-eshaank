@@ -11,9 +11,9 @@ public class IntroToTemplates {
 	public static void main(String[] args) {
 		IntroToTemplates i = new IntroToTemplates();
 		
-		String s = "taco";
+		int s = 12;
 		//Here we are calling calcStuff and passing in a String
-		i.calcStuff(s, 5);
+		i.calcStuff(s, 10);
 		
 		Random r = new Random();
 		//Here we are calling calcStuff and passing in a Random object
@@ -27,7 +27,7 @@ public class IntroToTemplates {
 	
 	//Here a template called Template is created as part of the calcStuff method
 	//The variable t can be any type: String, Object, Robot... whatever
-	public <Template> Template calcStuff(Template t, int r) {
+	public <T> T calcStuff(T t, int r) {
 		for (int i = 0; i < r; i++) {
 			System.out.println(t);
 		}
