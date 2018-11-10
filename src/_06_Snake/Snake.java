@@ -36,7 +36,9 @@ public class Snake {
 	public void update() {
 		//1. use a switch statement to check on the currentDirection
 		//   of the snake and calculate its next x and y position.
+		switch(currentDirection) {
 		
+		}
 
 		//2. Iterate through the SnakeSegments in reverse order
 		//2a. Update each snake segment to the location of the segment 
@@ -54,16 +56,20 @@ public class Snake {
 		//1. set the current direction equal to the passed in Direction only if canMove is true.
 		//   set canMove equal to false.
 		//   make sure the snake cannot completely reverse directions.
-		
+		canMove = false;
+		if (d == Direction.UP) {
+			canMove = true;
+			currentDirection  = d;
+		}
 	}
 
 	public void reset(Location loc) {
 		//1. clear the snake
-		
+		snake.clear();
 		//2. set the location of the head
-		
+		loc = new Location (100, 100);
 		//3. add the head to the snake
-		
+		snake.add(head);
 	}
 
 	public boolean isOutOfBounds() {
@@ -76,6 +82,12 @@ public class Snake {
 	public boolean isHeadCollidingWithBody() {
 		//1. complete the method so it returns true if the head is located
 		//   in the same location as any other body segment
+		for (int j = 0; j < snake.size(); j++) {
+			if (head == snake.get(j)) {
+			return true;
+		}
+		}
+		
 		
 		return false;
 	}
@@ -83,6 +95,11 @@ public class Snake {
 	public boolean isLocationOnSnake(Location loc) {
 		//1. complete the method so it returns true if the passed in
 		//   location is located on the snake
+		for (int i = 0; i < snake.size(); i++) {
+			if (loc == head.getLocation()) {
+			return true;
+		}
+		}
 		
 		return false;
 	}
