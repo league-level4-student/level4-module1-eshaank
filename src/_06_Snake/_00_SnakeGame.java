@@ -22,9 +22,9 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 	public static final Color BORDER_COLOR = Color.WHITE;
 	public static final Color BACKGROUND_COLOR = Color.BLACK;
 	public static final Color FOOD_COLOR = Color.RED;
-	public static final int WIDTH = 15;
-	public static final int HEIGHT = 12;
-	public static final int WINDOW_SCALE = 50;
+	public static final int WIDTH = 1;
+	public static final int HEIGHT = 1;
+	public static final int WINDOW_SCALE = 1000;
 	public static final int WINDOW_WIDTH = WINDOW_SCALE * WIDTH;
 	public static final int WINDOW_HEIGHT = WINDOW_SCALE * HEIGHT;
 
@@ -153,7 +153,7 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		// created.
 		// use the snake's isLocationOnSnake method to make sure you don't put the food
 		// on the snake
-		if (snake.isLocationOnSnake(loc)) {
+		if (snake.isLocationOnSnake(snake.getHeadLocation())) {
 			x += 10;
 			y += 20;
 			foodLocation = loc;
@@ -193,10 +193,17 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 snake.update();
 		// 2. if the snake is colliding with its own body
 		// or if the snake is out of bounds, call gameOver
-
+if (snake.isHeadCollidingWithBody() || snake.isOutOfBounds()) {
+	gameOver();
+}
 		// 3. if the location of the head is equal to the location of the food,
 		// feed the snake and set the food location
-
+if (snake.getHeadLocation() == foodLocation) {
+	snake.feed();
+	setFoodLocation();
+}
 		// 4. call panel.repaint();
+panel.repaint();
+
 	}
 }
