@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Snake {
 	public static final Color SNAKE_COLOR = Color.BLUE;
-	public static final int BODY_SIZE = 50;
+	public static final int BODY_SIZE = 25;
 
 	private SnakeSegment head;
 	private ArrayList<SnakeSegment> snake;
@@ -115,8 +115,7 @@ public class Snake {
 		// of the window
 		// and false otherwise
 		System.out.println(head.getLocation().x + ", " + head.getLocation().y);
-		if (head.getLocation().x > 1000 || head.getLocation().y > 1000 || head.getLocation().x < 0
-				|| head.getLocation().y < 0) {
+		if (head.getLocation().x > 77 || head.getLocation().y > 38 || head.getLocation().x < 0 || head.getLocation().y < 0) {
 			return true;
 		}
 		return false;
@@ -126,7 +125,7 @@ public class Snake {
 		// 1. complete the method so it returns true if the head is located
 		// in the same location as any other body segment
 		
-		System.out.println("Snake size: " + snake.size());
+		//System.out.println("Snake size: " + snake.size());
 		for (int j = 1; j < snake.size(); j++) {
 			if (head.getLocation().equals(snake.get(j).getLocation())) {
 				return true;

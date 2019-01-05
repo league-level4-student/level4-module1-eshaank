@@ -24,7 +24,7 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 	public static final Color FOOD_COLOR = Color.RED;
 	public static final int WIDTH = 1;
 	public static final int HEIGHT = 1;
-	public static final int WINDOW_SCALE = 1000;
+	public static final int WINDOW_SCALE = 2500;
 	public static final int WINDOW_WIDTH = WINDOW_SCALE * WIDTH;
 	public static final int WINDOW_HEIGHT = WINDOW_SCALE * HEIGHT;
 
@@ -52,7 +52,7 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 				g2.fillRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 
 				g2.setColor(FOOD_COLOR);
-				g2.drawOval(foodLocation.x * WINDOW_SCALE, foodLocation.y * WINDOW_SCALE, Snake.BODY_SIZE,
+				g2.drawOval(foodLocation.x * 25, foodLocation.y * 25, Snake.BODY_SIZE,
 						Snake.BODY_SIZE);
 				snake.draw(g);
 			}
@@ -133,7 +133,7 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 			snake.feed();
 			break;
 		}
-		System.out.println(e.getKeyCode());
+		//System.out.println(e.getKeyCode());
 		// if an arrow key is pressed, set the snake's
 		// direction accordingly
 
@@ -144,21 +144,26 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 	private void setFoodLocation() {
 		// 1. Create a new Location object that is set to a random location
 		Random x1 = new Random();
-		int x = x1.nextInt(WINDOW_WIDTH - 50);
+		int x = x1.nextInt(70);
 		Random y1 = new Random();
-		int y = y1.nextInt(WINDOW_HEIGHT - 50);
+		int y = y1.nextInt(30);
 
+		System.out.println(x + ", " + y);
+		
 		Location loc = new Location(x, y);
+		
+		
 		// 2. set the foodLocation variable equal to the Location object you just
 		// created.
 		// use the snake's isLocationOnSnake method to make sure you don't put the food
 		// on the snake
 		if (snake.isLocationOnSnake(snake.getHeadLocation())) {
-			x += 10;
-			y += 20;
+			x += 15;
+			y += 10;
 			foodLocation = loc;
 		}
 		foodLocation = loc;
+		
 	}
 
 	private void gameOver() {
@@ -198,7 +203,8 @@ if (snake.isHeadCollidingWithBody() || snake.isOutOfBounds()) {
 }
 		// 3. if the location of the head is equal to the location of the food,
 		// feed the snake and set the food location
-if (snake.getHeadLocation() == foodLocation) {
+
+if (snake.getHeadLocation().equals(foodLocation)) {
 	snake.feed();
 	setFoodLocation();
 }
